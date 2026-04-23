@@ -4,20 +4,12 @@ sources:
       schema: raw
       tables: 
         - name: airports
-          identifiers: airports
+
+          identifier: airports
         
         - name: runways
-          identifiers: runways
+          identifier: runways
         
         - name: airport_comments
-          identifiers: airport_comments
+          identifier: airport_comments
           
-          
-      #schema: silver
-      #tables: 
-        #- name: silver_airport_comments
-          #config:
-            #loaded_at_field: comment_timestamp
-            #freshness:
-              #warn_after: {count: 1, period: hour}
-              #error_after: {count: 24, period: hour}
