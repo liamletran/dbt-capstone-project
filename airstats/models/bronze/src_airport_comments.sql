@@ -1,3 +1,8 @@
+{{
+    config (
+        materialized='ephemeral'
+    )
+}}
 WITH src_airport_comments AS (
     SELECT * FROM {{ source('airstats', 'airport_comments') }}
 )

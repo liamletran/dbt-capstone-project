@@ -1,3 +1,8 @@
+{{
+    config (
+        materialized='ephemeral'
+    )
+}}
 WITH src_runways AS (
     SELECT * FROM {{ source('airstats', 'runways') }}
 )
