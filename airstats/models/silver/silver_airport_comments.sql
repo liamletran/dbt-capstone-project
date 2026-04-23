@@ -10,7 +10,7 @@
 WITH silver_airport_comments AS (
     SELECT
         *
-    FROM AIRSTATS.DEV.SRC_AIRPORT_COMMENTS--{{ ref('src_airport_comments') }}
+    FROM {{ ref('src_airport_comments') }}
 )
 SELECT COMMENT_ID, 
        AIRPORT_IDENT, 
