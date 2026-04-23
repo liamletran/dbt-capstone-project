@@ -1,5 +1,5 @@
 WITH src_airport_comments AS (
-    SELECT * FROM AIRSTATS.RAW.AIRPORT_COMMENTS
+    SELECT * FROM {{ source('airstats', 'airport_comments') }}
 )
 SELECT 
        ID AS comment_id,

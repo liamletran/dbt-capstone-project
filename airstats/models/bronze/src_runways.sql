@@ -1,5 +1,5 @@
 WITH src_runways AS (
-    SELECT * FROM AIRSTATS.RAW.RUNWAYS
+    SELECT * FROM {{ source('airstats', 'runways') }}
 )
 SELECT 
        ID AS runway_id,

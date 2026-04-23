@@ -1,5 +1,5 @@
 WITH src_airports AS (
-    SELECT * FROM AIRSTATS.RAW.AIRPORTS
+    SELECT * FROM {{ source('airstats', 'airports') }}
 )
 
 SELECT 
