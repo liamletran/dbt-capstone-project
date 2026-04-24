@@ -19,10 +19,18 @@ models:
           description: "The latitude coordinate of the airport."
           data_tests:
             - not_null
+            - dbt_expectations.expect_column_values_to_be_between:
+                arguments:
+                    min_value: -90 
+                    max_value: 90
         - name: airport_long
           description: "The longitude coordinate of the airport."
           data_tests:
             - not_null
+            - dbt_expectations.expect_column_values_to_be_between:
+                arguments:
+                    min_value: -180 
+                    max_value: 180
         - name: continent
           description: "The continent where the airport is located."
           data_tests:
@@ -47,10 +55,18 @@ models:
           data_tests:
             - not_null
             - unique
+            - dbt_expectations.expect_column_values_to_match_regex:
+                arguments:
+                    regex: '^[0-9]{6}$'
         - name: airport_ident
           description: "The unique identifier for the airport associated with the runway."
           data_tests:
             - not_null
+            - relationships:
+                arguments:
+                    to: ref('silver_airports')
+                    field: airport_ident
+                    severity: warn
         - name: runway_surface
           description: "The type of surface of the runway."
           data_tests:
@@ -81,6 +97,11 @@ models:
           description: "The unique identifier for the airport associated with the comment."
           data_tests:
             - not_null
+            - relationships:
+                arguments:
+                    to: ref('silver_airports')
+                    field: airport_ident
+                    severity: warn
         - name: comment_timestamp
           description: "The timestamp when the comment was made."
           data_tests:
@@ -97,3 +118,7 @@ models:
           description: "The timestamp when the comment was loaded into the silver layer."
           data_tests:
             - not_null
+            - dbt_expectations.expect_row_values_to_have_recent_data:
+                arguments:
+                    datepart: day
+                    interval: 1
