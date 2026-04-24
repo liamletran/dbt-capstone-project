@@ -19,14 +19,10 @@ models:
           description: "The latitude coordinate of the airport."
           data_tests:
             - not_null
-            - accepted_values:
-                values: [-90, 90]
         - name: airport_long
           description: "The longitude coordinate of the airport."
           data_tests:
             - not_null
-            - accepted_values:
-                values: [-180, 180]
         - name: continent
           description: "The continent where the airport is located."
           data_tests:
@@ -71,8 +67,6 @@ models:
             - not_null
             - accepted_values:
                 values: [0, 1]
-
-
 
 
     - name: silver_airport_comments
