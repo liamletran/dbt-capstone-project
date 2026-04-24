@@ -7,11 +7,7 @@ SELECT RUNWAY_ID,
        AIRPORT_IDENT, 
        RUNWAY_LENGTH_FT, 
        RUNWAY_WIDTH_FT, 
-       CASE 
-        WHEN RUNWAY_SURFACE IS NULL OR RUNWAY_SURFACE <> ''
-        THEN '__UNKNOWN__'
-        ELSE runway_surface
-        END runway_surface, 
+       NVL(RUNWAY_SURFACE, '__UNKNOWN__') AS runway_surface, 
        RUNWAY_LIGHTED, 
        RUNWAY_CLOSED
 FROM 
