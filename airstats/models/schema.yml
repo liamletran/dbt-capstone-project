@@ -24,7 +24,7 @@ models:
                     min_value: -90 
                     max_value: 90
         - name: airport_long
-          description: "The longitude coordinate of the airport."
+          description: '{{ doc("airport_long_description") }}'
           data_tests:
             - not_null
             - dbt_expectations.expect_column_values_to_be_between:
